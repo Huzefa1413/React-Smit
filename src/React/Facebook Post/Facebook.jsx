@@ -5,8 +5,10 @@ import Navbar from './components/Navbar';
 
 const Facebook = () => {
     return (
-        <div><Navbar />
-            <AddPosts /></div>
+        <div>
+            <Navbar />
+            <AddPosts />
+        </div>
     )
 }
 
