@@ -26,7 +26,7 @@
   justify-content: flex-end;
 }
 
-input {
+.abc {
   padding: 2%;
   font-family: cursive;
   border: 2px solid black;

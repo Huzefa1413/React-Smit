@@ -57,7 +57,7 @@ function NewsHome() {
         </div>
         <div className="search">
           <form className="searchform" onSubmit={submitHandler}>
-            <input id="searchbox"
+            <input className="abc" id="searchbox"
               type="text"
               placeholder="Search Robotsy News"
               onChange={(e) => {

@@ -5,7 +5,7 @@ import LoginForm from './React/Login Form/Login.jsx';
 import NewsWebsite from './React/News Website/NewsWebsite.jsx';
 import NewsWebsiteWithApi from './React/News Website with Api/Home/NewsHome.jsx'
 import DarkLightMode from './React/DarkLightMode/DarkLightMode.jsx';
-
+import Facebook from './React/Facebook Post/Facebook.jsx';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path='/newswebsite' element={<NewsWebsite />} exact />
           <Route path='/newswebsitewithapi' element={<NewsWebsiteWithApi />} exact />
           <Route path='/darklightmode' element={<DarkLightMode />} exact />
-          <Route path='/facebookpost' element={<Home />} exact />
+          <Route path='/facebookpost' element={<Facebook />} exact />
           <Route path='/facebookloginsignupwithposting' element={<Home />} exact />
           <Route path='/facebookwithfirebaseauthentication' element={<Home />} exact />
           <Route path='/hackathonattendanceapp' element={<Home />} exact />
