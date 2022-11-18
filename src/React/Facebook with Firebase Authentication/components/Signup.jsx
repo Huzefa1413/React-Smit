@@ -1,34 +1,15 @@
 import React from 'react'
+import { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useState, useEffect } from 'react';
-import { collection, addDoc, onSnapshot, query } from "firebase/firestore";
-import { db } from '../../firebaseConfig';
 
-const Register = () => {
+const Signup = () => {
+
     const navigate = useNavigate();
-    const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        let unsubscribe = null;
-
-        const getRealtimeData = async () => {
-            const q = query(collection(db, "Facebook Login Signup", "Facebook Login Signup", "users"));
-            unsubscribe = onSnapshot(q, (querySnapshot) => {
-                const myusers = [];
-                querySnapshot.forEach((doc) => {
-                    myusers.push({ id: doc.id, ...doc.data() });
-                });
-                setUsers(myusers);
-            });
-        }
-        getRealtimeData();
-        return () => {
-            unsubscribe();
-        }
-    }, [])
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -59,34 +40,30 @@ const Register = () => {
         }),
         onSubmit: async (values) => {
             setIsLoading(true)
-            let userFound = false;
-            if (users.length > 0) {
-                // eslint-disable-next-line
-                users.map(eachUser => {
-                    if ((eachUser.email === values.email) && (eachUser.password === values.password)) {
-                        userFound = true;
-                    }
-                })
-            }
-            (userFound ? (error()) : savePost(values))
+            signupHandler(values);
         }
     })
-    const error = () => {
-        alert('This user already exist')
-        setIsLoading(false);
-    }
-    const savePost = async (e) => {
-        try {
-            await addDoc(collection(db, "Facebook Login Signup", "Facebook Login Signup", "users"), {
-                username: e.username,
-                email: e.email,
-                password: e.password
+
+    const signupHandler = (e) => {
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, e.email, e.password)
+            .then(() => {
+                updateProfile(auth.currentUser, {
+                    displayName: e.username
+                }).then(() => {
+                }).catch((error) => {
+                    console.error(error)
+                    alert('Unable to Get Username')
+                    setIsLoading(false);
+                });
+                navigate('/facebookwithfirebaseauthentication');
+                setIsLoading(false)
+            })
+            .catch((error) => {
+                console.error(error)
+                alert('Unable to Login, Email already in use')
+                setIsLoading(false)
             });
-            setIsLoading(false)
-            navigate('/facebookloginsignupwithposting')
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
     }
 
     return (
@@ -114,10 +91,10 @@ const Register = () => {
                 {
                     (!isLoading) ? (<input value="Signup" type='submit' className="btn" />) : (<div className='loader'></div>)
                 }
-                <input type="button" value='Login Page' className='btn' onClick={() => navigate('/facebookloginsignupwithposting')} />
+                <input type="button" value='Login Page' className='btn' onClick={() => navigate('/facebookwithfirebaseauthentication')} />
             </form>
         </>
     )
 }
 
-export default Register
+export default Signup

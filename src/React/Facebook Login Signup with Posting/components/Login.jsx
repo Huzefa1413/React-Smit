@@ -66,7 +66,7 @@ const Login = () => {
     })
     return (
         <>
-            <form onSubmit={formik.handleSubmit}>
+            <form className='loginform' onSubmit={formik.handleSubmit}>
                 <h2 className="title">Sign in</h2>
                 <div className="input-field">
                     <input name='email' type="email" placeholder="Email" value={formik.values.email} onChange={formik.handleChange} />

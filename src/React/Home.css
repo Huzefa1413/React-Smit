@@ -3,15 +3,19 @@
     margin: 0%;
 }
 
+.body {
+    background: #2b2f77;
+    background: -webkit-linear-gradient(0deg, #2b2f77 0%, #141852 50%, #070b34 100%);
+    background: linear-gradient(0deg, #2b2f77 0%, #141852 50%, #070b34 100%);
+    background-attachment: fixed;
+    height: 100vh;
+}
+
 .maindiv {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    background: #2b2f77;
-    background: -webkit-linear-gradient(0deg, #2b2f77 0%, #141852 50%, #070b34 100%);
-    background: linear-gradient(0deg, #2b2f77 0%, #141852 50%, #070b34 100%);
-    background-attachment: fixed;
 }
 
 .maindiv div {
@@ -36,4 +40,10 @@
     font-size: 1.3rem;
     color: black;
     font-family: cursive;
+}
+
+@media screen and (max-width: 797px) {
+    .body {
+        height: 100%;
+    }
 }
