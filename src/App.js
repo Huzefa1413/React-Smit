@@ -32,7 +32,6 @@ function App() {
           <Route path='/facebookwithfirebaseauthentication' element={<FacebookAuth />} />
           <Route path="/facebookwithfirebaseauthentication/home" element={<><FacebookAuthNav /><FacebookAuthAddPost /></>} />
           <Route path="/facebookwithfirebaseauthentication/signup" element={<FacebookAuthSignup />} />
-          <Route path='/hackathonattendanceapp' element={<Home />} />
         </Routes>
       </Router>
     </>

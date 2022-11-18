@@ -30,9 +30,6 @@ const Home = () => {
                 <div>
                     <Link target={"_blank"} to="/facebookwithfirebaseauthentication">Facebook with Firebase Authentication</Link>
                 </div>
-                <div>
-                    <Link target={"_blank"} to="/hackathonattendanceapp">Hackathon Attendance App</Link>
-                </div>
             </div>
         </div>
     )
