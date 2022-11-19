@@ -1,9 +1,13 @@
+import { Helmet } from 'react-helmet';
 import logo from './logo.jfif';
 import './NewsWebsite.css';
 
 function NewsWebsite() {
   return (
     <>
+      <Helmet>
+        <title>News Website</title>
+      </Helmet>
       <Post
         author="Jarco Vianen"
         publishedAt="2022-10-12 | 17:02:46"
@@ -37,7 +41,7 @@ function NewsWebsite() {
 }
 
 const Post = (props) => (
-  <div className='post' >
+  <div className='newspost' >
     <div className='head'>
       <div className='logo'><img src={logo} alt="Logo" /></div>
       <div className="authorANDimage">

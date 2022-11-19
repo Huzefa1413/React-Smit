@@ -1,7 +1,7 @@
 import "./NewsPost.css";
 
 const Post = (props, i) => (
-  <div key={i} className="post">
+  <div key={i} className="apipost">
     <h2>{props.source}</h2>
     <div className="time">{props.publishedAt}</div>
     <div className="data">

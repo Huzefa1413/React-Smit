@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useState, useEffect } from 'react';
 import { collection, addDoc, onSnapshot, query } from "firebase/firestore";
 import { db } from '../../firebaseConfig';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -91,6 +92,9 @@ const Register = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Facebook | Sign up</title>
+            </Helmet>
             <form className='loginform' onSubmit={formik.handleSubmit}>
                 <h2 className="title">Sign Up</h2>
                 <div className="input-field">

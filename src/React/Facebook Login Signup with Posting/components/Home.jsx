@@ -12,6 +12,7 @@ import { collection, addDoc, onSnapshot, query, serverTimestamp, orderBy } from 
 import { Link } from 'react-router-dom';
 import logout from './assets/logout.png';
 import { db } from '../../firebaseConfig';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
 
@@ -172,6 +173,9 @@ const Home = () => {
     })
     return (
         <>
+            <Helmet>
+                <title>Facebook | Home</title>
+            </Helmet>
             <div className='navbar'>
                 <div>
                     <div className="logoname">Facebook</div>

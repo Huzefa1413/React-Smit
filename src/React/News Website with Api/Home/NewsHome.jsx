@@ -3,6 +3,7 @@ import axios from "axios";
 import moment from "moment/moment";
 import Post from "../Post/NewsPost.jsx";
 import "./NewsHome.css";
+import { Helmet } from "react-helmet";
 
 function NewsHome() {
   const [post, setPost] = useState([]);
@@ -51,7 +52,10 @@ function NewsHome() {
   };
   return (
     <>
-      <div className="navbar">
+      <Helmet>
+        <title>Robotsy News</title>
+      </Helmet>
+      <div className="apinavbar">
         <div className="newslogo">
           <h1>Robotsy News</h1>
         </div>

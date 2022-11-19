@@ -1,9 +1,13 @@
 import React from "react";
 import "./CV.css";
+import { Helmet } from 'react-helmet'
 
 function CV() {
   return (
     <div>
+      <Helmet>
+        <title>CV</title>
+      </Helmet>
       <div className="top"  >
         <div className="right">
           <h1>Huzefa Mustafa</h1>
