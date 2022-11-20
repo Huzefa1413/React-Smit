@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 function NewsHome() {
   const [post, setPost] = useState([]);
   const [search, setSearch] = useState("World");
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -20,9 +20,10 @@ function NewsHome() {
         'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
       }
     };
-
+    setLoading(true);
     axios.request(options).then(function (response) {
       setPost(response.data.value)
+      setLoading(false)
     }).catch(function (error) {
       console.error(error);
     });
@@ -42,9 +43,10 @@ function NewsHome() {
         'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
       }
     };
-
+    setLoading(true)
     axios.request(options).then(function (response) {
       setPost(response.data.value)
+      setLoading(false)
     }).catch(function (error) {
       console.error(error);
     });
@@ -81,19 +83,21 @@ function NewsHome() {
         <button className={`${(search === "Science") ? "highlight" : "nothighlight"}`} type="submit" onClick={() => setSearch("Science")}>Science</button>
         <button className={`${(search === "Health") ? "highlight" : "nothighlight"}`} type="submit" onClick={() => setSearch("Health")}>Health</button>
       </form>
-      <div className="newspostsbody">
-        {post.map((eachPost, i) => (
-          <Post
-            key={i}
-            source={eachPost?.provider[0]?.name}
-            publishedAt={moment(eachPost?.datePublished).format('Do MMMM, h:mm a')}
-            title={eachPost?.name}
-            description={eachPost?.description}
-            url={eachPost?.url}
-            urlToImage={eachPost?.image?.thumbnail?.contentUrl?.replace("pid=News", "")}
-          />
-        ))}
-      </div>
+      {loading ? <div className="loadercontainer"><div className='newsloader'></div></div> :
+        <div className="newspostsbody">
+          {post.map((eachPost, i) => (
+            <Post
+              key={i}
+              source={eachPost?.provider[0]?.name}
+              publishedAt={moment(eachPost?.datePublished).format('Do MMMM, h:mm a')}
+              title={eachPost?.name}
+              description={eachPost?.description}
+              url={eachPost?.url}
+              urlToImage={eachPost?.image?.thumbnail?.contentUrl?.replace("pid=News", "")}
+            />
+          ))}
+        </div>
+      }
     </>
   );
 }

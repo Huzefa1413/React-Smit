@@ -75,6 +75,44 @@
   background-color: aqua;
 }
 
+.loadercontainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.newsloader {
+  border: 16px solid black;
+  border-radius: 50%;
+  border-top: 16px solid cadetblue;
+  width: 60px;
+  height: 60px;
+  animation: spin 4s linear infinite;
+  box-sizing: border-box;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(360deg);
+  }
+
+  50% {
+    transform: rotate(720deg);
+  }
+
+  75% {
+    transform: rotate(1080deg);
+  }
+
+  100% {
+    transform: rotate(1440deg);
+  }
+}
+
 @media screen and (max-width: 525px) {
   .logo {
     width: 100%;
